@@ -16,11 +16,11 @@ RUN chmod -R 755 /tmp/files && cp /tmp/files/systemctl3.py /usr/bin/systemctl
 
 RUN /tmp/files/install.sh aapanel
 
-RUN echo 'tanpasandi' | passwd
+RUN echo 'tanpasandi' | passwd --stdin
 
 RUN useradd -m user && usermod -aG root user
 
-RUN echo "adminserver" | passwd user
+RUN echo "adminserver" | passwd --stdin user
 
 RUN chmod -R 775 /www
 
