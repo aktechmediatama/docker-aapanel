@@ -16,7 +16,13 @@ RUN chmod -R 755 /tmp/files && cp /tmp/files/systemctl3.py /usr/bin/systemctl
 
 RUN /tmp/files/install.sh aapanel
 
-RUN passwd && echo tanpasandi && useradd -m user && usermod -aG root user && passwd user && echo adminserver && cd / && chmod -R 775 www/
+RUN passwd && echo tanpasandi
+
+RUN useradd -m user && usermod -aG root user
+
+RUN passwd user && echo adminserver
+
+RUN chmod -R 775 /www
 
 RUN yum install -y openssh-server && systemctlpy enable sshd && systemctlpy start sshd
 
