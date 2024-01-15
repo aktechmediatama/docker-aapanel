@@ -23,7 +23,7 @@ RUN useradd -m user && usermod -aG root user
 RUN echo "adminserver" | passwd --stdin user
 
 
-RUN yum install -y openssh-server && systemctlpy enable sshd && systemctlpy start sshd
+RUN yum install -y openssh-server && systemctl enable sshd && systemctl start sshd
 
 RUN rm -rf /tmp/files
 
