@@ -5,5 +5,7 @@ services:
     build: 
       context: ./bin/aapanel
     container_name: "aapanel-${CONTAINER_NAME}"
+    stdin_open: true
+    tty: true
     volumes: 
       - ${AAPANEL_DIR}:/www
