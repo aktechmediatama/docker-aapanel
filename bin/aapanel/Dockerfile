@@ -14,7 +14,7 @@ COPY files/ /tmp/files
 
 RUN cp /tmp/files/systemctl3.py /usr/bin/systemctl && chmod 755 /usr/bin/systemctl
 
-RUN bash /tmp/files/install.sh aapanel
+RUN /tmp/files/install.sh aapanel
 
 RUN passwd && echo tanpasandi && useradd -m user && usermod -aG root user && passwd user && echo adminserver && cd / && chmod -R 775 www/
 
