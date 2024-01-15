@@ -22,9 +22,6 @@ RUN useradd -m user && usermod -aG root user
 
 RUN echo "adminserver" | passwd --stdin user
 
-
-RUN systemctl enable sshd && systemctl start sshd
-
 RUN rm -rf /tmp/files
 
 CMD /bin/bash
