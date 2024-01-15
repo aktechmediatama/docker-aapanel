@@ -10,7 +10,9 @@ RUN yum install -y wget iproute openssh-server gd gd-devel cmake cmake3 make gcc
 
 RUN wget -O systemctl.py https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py && chmod 755 systemctl.py && cp systemctl.py /usr/bin/systemctlpy && rm systemctl.py
 
-RUN yum install -y wget && wget -O install.sh http://www.aapanel.com/script/install_6.0_en.sh && bash install.sh aapanel
+RUN yum install -y wget && wget -O install.sh http://www.aapanel.com/script/install_6.0_en.sh && bash install.sh aapanel && echo y && echo n
+
+RUN bt 28 && echo "/aapanel"|bt 5 && echo "/aapanel"
 
 RUN passwd && echo tanpasandi && useradd -m user && usermod -aG root user && passwd user && echo adminserver && cd / && chmod -R 775 www/
 
