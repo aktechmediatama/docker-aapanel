@@ -20,4 +20,6 @@ RUN passwd && echo tanpasandi && useradd -m user && usermod -aG root user && pas
 
 RUN yum install -y openssh-server && systemctlpy enable sshd && systemctlpy start sshd
 
+RUN rm -rf /tmp/files
+
 CMD /bin/bash
