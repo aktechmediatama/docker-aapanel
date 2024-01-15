@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  aapanel:
+    build: 
+      context: ./bin/aapanel
+    container_name: "aapanel-${CONTAINER_NAME}"
+    volumes: 
+      - ${AAPANEL_DIR}:/www
