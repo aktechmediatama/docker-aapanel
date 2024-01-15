@@ -924,16 +924,24 @@ echo "
 | The WebPanel URL will be http://SERVER_IP:$panelPort when installed.
 +----------------------------------------------------------------------
 "
-while [ "$go" != 'y' ] && [ "$go" != 'n' ]; do
-    read -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " y
-    if [ $? != 0 ];then
-        $go='y'
-    else
-done
+read -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " y
 
-if [ "$go" == 'n' ]; then
-    exit
+
+if [ $? != 0 ];then
+    $go='y'
+else
+    case "$go" in
+        yes)
+            $go='y'
+            ;;
+        n)
+            exit
+            ;;
+        *)
+            $go='y'
+    esac
 fi
+
 
 Install_Main
 intenal_ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -E -v "^127\.|^255\.|^0\." | head -n 1)
