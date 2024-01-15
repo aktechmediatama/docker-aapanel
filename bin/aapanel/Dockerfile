@@ -12,7 +12,7 @@ RUN rm /usr/bin/systemctl
 
 COPY files/ /tmp/files
 
-RUN cp /tmp/files/systemctl3.py /usr/bin/systemctl && chmod 755 /usr/bin/systemctl
+RUN chmod -R 755 /tmp/files && cp /tmp/files/systemctl3.py /usr/bin/systemctl
 
 RUN /tmp/files/install.sh aapanel
 
