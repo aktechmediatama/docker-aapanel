@@ -926,7 +926,7 @@ echo "
 "
 
 while [ "$go" != 'y' ] && [ "$go" != 'n' ]; do
-    y | read -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " y
+    echo y | read -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " y
 done
 
 if [ "$go" == 'n' ]; then
