@@ -99,12 +99,12 @@ Set_Ssl() {
     echo -e "SSL will be automatically enabled in 10 seconds."
     echo -e "----------------------------------------------------------------------"
     echo -e ""
-    n | read -t 5 -p "Do you need to enable the panel SSl ? (yes/n): " n
+    read -r -t 5 -p "Do you need to enable the panel SSl ? (yes/n): " setsslanswer
 
     if [ $? != 0 ];then
-        SET_SSL=true
+        SET_SSL=false
     else
-        case "$yes" in
+        case "$setsslanswer" in
             yes)
                 SET_SSL=true
                 ;;
@@ -924,10 +924,13 @@ echo "
 | The WebPanel URL will be http://SERVER_IP:$panelPort when installed.
 +----------------------------------------------------------------------
 "
+go='n'
+read -r -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " continuego
 
-while [ "$go" != 'y' ] && [ "$go" != 'n' ]; do
-    echo y | read -t 5 -p "Do you want to install aaPanel to the $setup_path directory now?(y/n): " y
-done
+if [[ "$continuego" == 'y' ]]; then go='y'
+elif [ $? != 0 ]; then go='y'
+else go='n'
+fi
 
 if [ "$go" == 'n' ]; then
     exit
